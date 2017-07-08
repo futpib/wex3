@@ -9,6 +9,12 @@ export enum Valute {
     USD = "usd",
     LTC = "ltc",
     ETH = "eth",
+    RUR = "rur",
+    EUR = "eur",
+    NMC = "nmc",
+    NVC = "nvc",
+    PPC = "ppc",
+    DSH = "dsh",
 }
 export enum OrderType {
     Buy = "buy",
