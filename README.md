@@ -30,6 +30,10 @@ API Client for https://btc-e.com: Trade API and Public API with TypeScript suppo
     npm install
     npm test
 
+# Donate
+
+    Ethereum: 0x053C5BF25C80a04494768a2436e54126FDE9DB1d
+
 [npm-image]: https://badge.fury.io/js/btc-e3.svg
 [npm-url]: https://npmjs.org/package/btc-e3
 [travis-image]: https://travis-ci.org/arvitaly/btc-e3.svg?branch=master
