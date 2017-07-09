@@ -1,4 +1,4 @@
-import { IValutePair, OrderID, OrderStatus, OrderType, Valute } from ".";
+import { OrderID, OrderStatus, OrderType, Valute, ValutePair } from ".";
 import { generateSign } from "./util";
 export interface ITradeAPIConfig {
     key: string;
@@ -47,7 +47,7 @@ class TradeAPI {
      * @param rate the rate at which you need to buy/sell :: numerical
      * @param amount the amount you need to buy / sell :: numerical
      */
-    public async Trade(pair: IValutePair, type: OrderType, rate: number, amount: number): Promise<{
+    public async Trade(pair: ValutePair, type: OrderType, rate: number, amount: number): Promise<{
         received: number; // The amount of currency bought/sold.
         remains: number; // The remaining amount of currency to be bought/sold (and the initial order amount).
         /*
@@ -58,7 +58,7 @@ class TradeAPI {
         funds: Funds; // Balance after the request.
     }> {
         return this.request("Trade", {
-            pair: pair.from + "_" + pair.to,
+            pair,
             type,
             rate,
             amount,
@@ -70,7 +70,7 @@ class TradeAPI {
      * If the order disappears from the list, it was either executed or canceled.
      * @param pair pair :: btc_usd (example) :: all pairs
      */
-    public async ActiveOrders(pair: IValutePair): Promise<{
+    public async ActiveOrders(pair: ValutePair): Promise<{
         // index - Order ID.
         [index: number]: {
             pair: string; // The pair on which the order was created.
@@ -82,7 +82,7 @@ class TradeAPI {
         };
     }> {
         return this.request("ActiveOrders", {
-            pair: pair.from + "_" + pair.to,
+            pair,
         });
     }
     /**
@@ -130,7 +130,7 @@ class TradeAPI {
         order?: "ASC" | "DESC"; // Sorting :: ASC or DESC :: DESC
         since?: number; // the time to start the display :: UNIX time :: 0
         end?: number; // the time to end the display :: UNIX time :: ∞
-        pair?: IValutePair; // pair to be displayed :: btc_usd (example) :: all pairs
+        pair?: ValutePair; // pair to be displayed :: btc_usd (example) :: all pairs
     }): Promise<{
         [index: number]: {
             pair: string; // The pair on which the trade was executed.
@@ -144,9 +144,6 @@ class TradeAPI {
     }> {
         params = params || {};
         const p: any = { ...params };
-        if (params.pair) {
-            p.pair = params.pair.from + "_" + params.pair.to;
-        }
         if (params.endId) {
             p.end_id = params.endId;
             delete p.endId;

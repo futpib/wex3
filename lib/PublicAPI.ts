@@ -1,8 +1,5 @@
-import { Valute } from ".";
-export interface IValutePair {
-    from: Valute;
-    to: Valute;
-}
+import { ValutePair } from ".";
+
 export interface ITickerValue {
     high: number; // maximum price.
     low: number; // minimum price.
@@ -47,10 +44,9 @@ class PublicAPI {
      * trade volume in currency, the last trade, Buy and Sell price.
      *  All information is provided over the past 24 hours.
      */
-    public async ticker(from: Valute, to: Valute): Promise<ITickerValue> {
-        const pairName = from + "_" + to;
-        const response = await fetch("https://btc-e.com/api/3/ticker/" + pairName);
-        return (await response.json())[pairName];
+    public async ticker(pair: ValutePair): Promise<ITickerValue> {
+        const response = await fetch("https://btc-e.com/api/3/ticker/" + pair);
+        return (await response.json())[pair];
     }
     /**
      * This method provides all the information about currently active pairs,
@@ -58,9 +54,9 @@ class PublicAPI {
      * trade volume in currency, the last trade, Buy and Sell price.
      *  All information is provided over the past 24 hours.
      */
-    public async tickers(pairs: IValutePair[]): Promise<ITickerResult> {
+    public async tickers(pairs: ValutePair[]): Promise<ITickerResult> {
         const response = await fetch("https://btc-e.com/api/3/ticker/"
-            + pairs.map((pair) => pair.from + "_" + pair.to).join("-"));
+            + pairs.map((pair) => pair).join("-"));
         return await response.json();
     }
     /**
@@ -69,13 +65,12 @@ class PublicAPI {
      * which indicates how many orders should be displayed (150 by default).
      * Is set to less than 5000.
      */
-    public async depth(from: Valute, to: Valute): Promise<{
+    public async depth(pair: ValutePair): Promise<{
         asks: Array<[number, number]>;
         bids: Array<[number, number]>;
     }> {
-        const pairName = from + "_" + to;
-        const response = await fetch("https://btc-e.com/api/3/depth/" + pairName);
-        return (await response.json())[pairName];
+        const response = await fetch("https://btc-e.com/api/3/depth/" + pair);
+        return (await response.json())[pair];
     }
     /**
      * This method provides the information about the last trades.
@@ -83,16 +78,15 @@ class PublicAPI {
      * which indicates how many orders should be displayed (150 by default).
      * The maximum allowable value is 5000.
      */
-    public async trades(from: Valute, to: Valute): Promise<Array<{
+    public async trades(pair: ValutePair): Promise<Array<{
         type: "ask" | "bid"; // ask – Sell, bid – Buy.
         price: number; // Buy price/Sell price.
         amount: number; // the amount of asset bought/sold.
         tid: number; // trade ID.
         timestamp: number; // UNIX time of the trade.
     }>> {
-        const pairName = from + "_" + to;
-        const response = await fetch("https://btc-e.com/api/3/trades/" + pairName);
-        return (await response.json())[pairName];
+        const response = await fetch("https://btc-e.com/api/3/trades/" + pair);
+        return (await response.json())[pair];
     }
 }
 export default PublicAPI;

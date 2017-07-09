@@ -1,4 +1,4 @@
-import { IValutePair, OrderType, Valute } from ".";
+import { OrderType, Valute, ValutePair } from ".";
 import TradeAPI from "./TradeAPI";
 let request: jasmine.Spy;
 let api: TradeAPI;
@@ -42,22 +42,20 @@ it("getInfo", async () => {
     expect(request.calls.allArgs()).toEqual([["getInfo", {}]]);
 });
 it("Trade", async () => {
-    const pair: IValutePair = { from: Valute.BTC, to: Valute.LTC };
     const rate = 11;
     const amount = 567;
-    expect(await api.Trade(pair, OrderType.Buy, rate, amount)).toBe(ret);
+    expect(await api.Trade(ValutePair.BTC_EUR, OrderType.Buy, rate, amount)).toBe(ret);
     expect(request.calls.allArgs()).toEqual([["Trade", {
         amount,
-        pair: "btc_ltc",
+        pair: "btc_eur",
         rate,
         type: "buy",
     }]]);
 });
 it("ActiveOrders", async () => {
-    const pair: IValutePair = { from: Valute.BTC, to: Valute.ETH };
-    expect(await api.ActiveOrders(pair)).toBe(ret);
+    expect(await api.ActiveOrders(ValutePair.ETH_BTC)).toBe(ret);
     expect(request.calls.allArgs()).toEqual([["ActiveOrders", {
-        pair: "btc_eth",
+        pair: "eth_btc",
     }]]);
 });
 it("OrderInfo", async () => {
@@ -88,10 +86,7 @@ it("TradeHistory", async () => {
         from,
         fromId,
         order: "ASC",
-        pair: {
-            from: Valute.BTC,
-            to: Valute.USD,
-        },
+        pair: ValutePair.BTC_USD,
         since,
     })).toBe(ret);
     expect(request.calls.allArgs()).toEqual([["TradeHistory", {
