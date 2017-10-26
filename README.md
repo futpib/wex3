@@ -36,9 +36,9 @@ API Client for https://wex.nz: Trade API and Public API with TypeScript support.
 
 [npm-image]: https://badge.fury.io/js/wex3.svg
 [npm-url]: https://npmjs.org/package/wex3
-[travis-image]: https://travis-ci.org/arvitaly/wex3.svg?branch=master
-[travis-url]: https://travis-ci.org/arvitaly/wex3
-[daviddm-image]: https://david-dm.org/arvitaly/wex3.svg?theme=shields.io
-[daviddm-url]: https://david-dm.org/arvitaly/wex3
-[coveralls-image]: https://coveralls.io/repos/arvitaly/wex3/badge.svg
-[coveralls-url]: https://coveralls.io/r/arvitaly/wex3
+[travis-image]: https://travis-ci.org/futpib/wex3.svg?branch=master
+[travis-url]: https://travis-ci.org/futpib/wex3
+[daviddm-image]: https://david-dm.org/futpib/wex3.svg?theme=shields.io
+[daviddm-url]: https://david-dm.org/futpib/wex3
+[coveralls-image]: https://coveralls.io/repos/futpib/wex3/badge.svg
+[coveralls-url]: https://coveralls.io/r/futpib/wex3
