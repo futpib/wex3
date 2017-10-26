@@ -1,5 +1,5 @@
 {
-  "name": "btc-e3",
+  "name": "wex3",
   "version": "0.1.1",
   "description": "",
   "main": "lib/index.js",
@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/arvitaly/btc-e3.git"
+    "url": "git+https://github.com/futpib/wex3.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/arvitaly/btc-e3/issues"
+    "url": "https://github.com/futpib/wex3/issues"
   },
-  "homepage": "https://github.com/arvitaly/btc-e3#readme",
+  "homepage": "https://github.com/futpib/wex3#readme",
   "jest": {
     "setupFiles": [
       "./setupJest.js"

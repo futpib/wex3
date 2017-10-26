@@ -35,7 +35,7 @@ class PublicAPI {
         hidden: 0 | 1; // whether the pair is hidden, 0 or 1.
         fee: number; // commission for this pair.
     }> {
-        const response = await fetch("https://btc-e.com/api/3/info");
+        const response = await fetch("https://wex.nz/api/3/info");
         return await response.json();
     }
     /**
@@ -45,7 +45,7 @@ class PublicAPI {
      *  All information is provided over the past 24 hours.
      */
     public async ticker(pair: ValutePair): Promise<ITickerValue> {
-        const response = await fetch("https://btc-e.com/api/3/ticker/" + pair);
+        const response = await fetch("https://wex.nz/api/3/ticker/" + pair);
         return (await response.json())[pair];
     }
     /**
@@ -55,7 +55,7 @@ class PublicAPI {
      *  All information is provided over the past 24 hours.
      */
     public async tickers(pairs: ValutePair[]): Promise<ITickerResult> {
-        const response = await fetch("https://btc-e.com/api/3/ticker/"
+        const response = await fetch("https://wex.nz/api/3/ticker/"
             + pairs.map((pair) => pair).join("-"));
         return await response.json();
     }
@@ -69,7 +69,7 @@ class PublicAPI {
         asks: Array<[number, number]>;
         bids: Array<[number, number]>;
     }> {
-        const response = await fetch("https://btc-e.com/api/3/depth/" + pair);
+        const response = await fetch("https://wex.nz/api/3/depth/" + pair);
         return (await response.json())[pair];
     }
     /**
@@ -85,7 +85,7 @@ class PublicAPI {
         tid: number; // trade ID.
         timestamp: number; // UNIX time of the trade.
     }>> {
-        const response = await fetch("https://btc-e.com/api/3/trades/" + pair);
+        const response = await fetch("https://wex.nz/api/3/trades/" + pair);
         return (await response.json())[pair];
     }
 }
