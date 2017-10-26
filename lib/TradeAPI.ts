@@ -12,7 +12,7 @@ export interface IWithdrawCoinResult {
 }
 /**
  * This API allows to trade on the exchange and receive information about the account.
- * To use this API, you need to create an API key. https://btc-e.com/tapi/docs#main
+ * To use this API, you need to create an API key. https://wex.nz/tapi/docs#main
  */
 class TradeAPI {
     constructor(protected config: ITradeAPIConfig) { }
@@ -286,7 +286,7 @@ class TradeAPI {
             "Sign": sign,
             "Content-Type": "application/x-www-form-urlencoded",
         };
-        const response = await fetch("https://btc-e.com/tapi", {
+        const response = await fetch("https://wex.nz/tapi", {
             method: "POST",
             headers,
             body: postData,

@@ -1,6 +1,6 @@
 # wex3
 
-API Client for https://btc-e.com: Trade API and Public API with TypeScript support.
+API Client for https://wex.nz: Trade API and Public API with TypeScript support.
 
 [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url]
 [![experimental](http://badges.github.io/stability-badges/dist/experimental.svg)](http://github.com/badges/stability-badges)
